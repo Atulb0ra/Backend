@@ -1,0 +1,95 @@
+#to run the code in node js:
+    node <filename>.js
+
+
+
+#Process object in node js:
+this process provide information about, and control over the current node.js process.
+
+NOTE:process.argv is an array containing the command-line arguments passed when the Node.js process was launched.
+
+
+
+
+#MODULES.EXPORTS : a special object
+
+(I)#transfering data from one file to another file
+//suppose this is in Math.js file
+module.exports = {
+    name: "John",
+    age: 30,
+    city: "New York"
+};
+
+//this is in another file(let say main.js)
+require() a built in function to include modules that exist in separate files.
+require('./path/to/module');
+Example:
+const myModule = require('./Math');
+console.log(myModule.name);
+output:
+John
+console.log(myModule);
+output:
+{ name: 'John', age: 30, city: 'New York' }
+
+
+(II)#transferingdata from a directory to another directory
+first create a directory(let say Files) and then create a file(index.js) in that directory.this index.js file is the main file of that 
+directory which contain all data of other files if added.(using require function and module.exports)
+
+and then we can us that directory in node.s file using require function.
+require('./Files');
+
+
+
+
+
+
+#Node packages manager(npm):
+it is the standard package manager for node.js.
+it is like a library in which we can use many packages to use in our project with the help of command line tool.
+
+
+
+#Installing a package:
+npm install <package_name>
+it contains two files:
+1.package.json: it contains the metadata about the project and its dependencies such as name,version,description,author,license,dependencies,etc.
+2.node_modules: it contains the dependencies of the project.
+3.package-lock.json: it contains the exact version of the dependencies that are installed in the node_modules directory.
+
+NOTE: if u want to install it globally then:
+first write this in terminal:sudo chown -R $USER/usr/local/lib/node_modules  (this is for admin permission)
+then:
+npm install -g <package_name>
+npm link <package_name>
+
+
+
+IMPORTANT NOTE:to make your own package:
+1.npm init: it creates a package.json file in the current directory.
+if u want to add figlet package in your project then:
+2.npm install figlet: it installs the figlet package in the node_modules directory.
+
+
+
+
+
+#require vs import:
+require is used to include modules that exist in separate files.
+import is used to include modules that exist in separate files in ES6.
+
+for import we use:
+import {something} from './path';
+for that we need to write in package.json file:
+"type": "module",
+and we have to use export keyword to export the data from one file to another file.
+example:
+export const something = "something";
+
+advantage:
+we cant selectively load only the pieces we need with require but we can do that with import.
+loading is synchronous with require but asynchronous with import.
+
+

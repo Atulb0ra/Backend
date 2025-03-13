@@ -1,0 +1,87 @@
+#templating 
+EJS(Embedded JavaScript Templates)
+EJS is a simple templating language that lets you generate html markup with plain javascript
+
+NOTE:
+npm init -y automatically generate package.json
+npm i express will add express dependency in jason file
+npm i ejs will add ejs dependancy on json file
+
+
+
+#using ejs
+app.set("view engine", "ejs");
+app.get("/", (req, res)=>{
+    res.render("home.ejs");
+})
+
+By default name the foler views for creating tenplate
+
+
+#views directory
+const path = require("path");
+app.set("views", path.join(__dirname, "/views"));
+app.get("/", (req, res)=>{
+    res.render("home.ejs");
+})
+
+
+
+
+#Interpolation syntax:
+Interpolation refers to embedding expressions into marked up text.
+for this we need to know about different tags of ejs refer ejx.co for that.
+
+used for dynamic html
+
+
+
+#passing data to ejs
+app.get("/rolldice", (req, res)=>{
+    // generally we get data from data set
+    let diceval = Math.floor(Math.random()*6)+1;//let say this val is from database
+    // for that we need to add key value apir in render
+    res.render("rolldice.ejs", {num:diceval});
+    // res.render("rolldice.ejs");
+})
+
+
+
+#conditional statements in ejs
+<h1> dice gave value : <%= num %></h1>
+where this num is data from above passing data to ejs case
+<% if(num == 6){ %>
+<h2> Nice! Roll dice again.</h2>
+<%}%>
+
+
+
+#loops in ejs
+clet say we have 
+const followers = ["adam", "ayush", "mohit"]
+<% for(let name of followers) {%>
+<li><%= name%>name</li>
+<%}%>
+
+
+#accessing data from json file
+app.get("/ig/username",(req, res) =>){
+    const instadata = require("./data.json");
+    res.render("instagram.ejs",{data:instadata};)
+    console.log(instadata);
+}
+#in instagram.ejs file
+<h1> dice gave value : <%= data %></h1>//this will give a object
+
+
+
+
+#includes in ejs : used for subtemplates
+<%- include("includes/footer.ejs")%>
+
+
+
+
+
+
+

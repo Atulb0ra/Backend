@@ -1,0 +1,128 @@
+Get and post requests
+get:
+used to get some response
+data sent in query strings(limited, string data and visible in URL)
+
+post:
+used to  post something(for create/write/update)
+data sent via request body(it can be any type of data)
+
+
+#handling get request
+app.get("/register", (req, res) => {
+    let {user, password} = req.query;
+    res.send(`standard GET response. Welcome ${user}!`);
+});
+
+
+#handling post request
+app.use(express.urlencode({extended : true}));
+app.use(express.json());//for json files
+
+app.post("/register", (req, res) => {
+    let {user, password} = req.body;
+    res.send(`standard POST response. Welcome ${user}!`);
+});
+
+
+
+#object prototype
+prototypes are the mechanism by which javascript objects inherit feature from one another.
+it is like a single template object that all objects inherit methods and properties from without having
+their own copy.
+
+arr.__proto__(reference)
+Array.prototype(actual object)
+string.prototype
+
+Every object in JS has a built in property which is called a  prototypes.
+for example arr have push pop and other function which are included in prototype
+suppose we want to change definition o push function for every arr then
+
+arr.__proto__.push = (n) =>{console.log("pushing number:", n);}
+arr.push(3);
+pushing number : 3
+this will not add 3 to arr but just print it
+
+
+
+#factory function
+function personmaker(naem, age){
+    const person = {
+        name : name,
+        age:age,
+        talk(){
+            console.log(`Hi, my name is $(this.name)`);
+        },
+    };
+    return person;
+}
+let p1 = personmaker("adam", 25);
+let p2 = personmaker("eve", 25);
+
+disadvantage: copy talh function for every call and it is space inefficient
+
+
+
+
+#new Operator
+
+the new Operatorlets developers create an instance of a user-defined object type otherof one of 
+the built-in object types that has a constructor function
+constructor always start with capital letter
+function Person(name,age){
+    this.name = name;
+    this.age = age;
+}
+
+person.prototype.talk = function(){
+    console.log(`hi, my name is $(this.name)`);
+};
+let p1 = new Person("adam", 25);
+let p2 = new Person("eve", 25);
+
+
+
+
+#classes
+
+classes are template for creating objects
+the constructor method is a special method of a class for creating and initializing an object
+instance of that class
+
+class Person{
+    constructor(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    talk(){
+        console.log(`hi, my name is $(this.name)`);
+    }
+}
+let p1 = new Person("adam", 25);
+let p2 = new Person("eve", 25);
+
+
+
+
+#Inheritance
+it is a mechanism that allows us to create new classes on basis of already existing classes.
+class Person{
+    constructor(name,age){
+        this.name = name;
+        this.age = age;
+    }
+    talk(){
+        console.log(`hi, my name is $(this.name)`);
+    }
+}
+class Student extends Person{
+    constructor(name, age, marks){
+        super(name, age);//parent class construccot being called
+        this.marks = marks;
+    }
+    greet(){
+        return "hello!";
+    }
+}
+let s1 = new Student("adam" , 25, 95);
