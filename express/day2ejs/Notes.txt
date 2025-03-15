@@ -15,7 +15,7 @@ app.get("/", (req, res)=>{
     res.render("home.ejs");
 })
 
-By default name the foler views for creating tenplate
+By default name the folder views for creating tenplate
 
 
 #views directory
@@ -40,7 +40,7 @@ used for dynamic html
 app.get("/rolldice", (req, res)=>{
     // generally we get data from data set
     let diceval = Math.floor(Math.random()*6)+1;//let say this val is from database
-    // for that we need to add key value apir in render
+    // for that we need to add key value pair in render
     res.render("rolldice.ejs", {num:diceval});
     // res.render("rolldice.ejs");
 })
@@ -57,10 +57,10 @@ where this num is data from above passing data to ejs case
 
 
 #loops in ejs
-clet say we have 
+let say we have 
 const followers = ["adam", "ayush", "mohit"]
 <% for(let name of followers) {%>
-<li><%= name%>name</li>
+<li><%= name%></li>
 <%}%>
 
 
