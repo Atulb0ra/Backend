@@ -16,6 +16,9 @@ app.get("/register", (req, res) => {
 
 
 #handling post request
+step-1 set up POST request route to get some response
+step-2 pasre post request data
+
 app.use(express.urlencode({extended : true}));
 app.use(express.json());//for json files
 
@@ -25,6 +28,7 @@ app.post("/register", (req, res) => {
 });
 
 
+CONCEPT OF OOPS :
 
 #object prototype
 prototypes are the mechanism by which javascript objects inherit feature from one another.
@@ -60,7 +64,7 @@ function personmaker(naem, age){
 let p1 = personmaker("adam", 25);
 let p2 = personmaker("eve", 25);
 
-disadvantage: copy talh function for every call and it is space inefficient
+disadvantage: copy talk function for every call and it is space inefficient
 
 
 
@@ -125,4 +129,12 @@ class Student extends Person{
         return "hello!";
     }
 }
+class Teacher extends Person{
+    constructor(name, age, subject){
+        super(name, age);//parent class constructor being called
+        this.subject = subject;
+    }
+}
+    
 let s1 = new Student("adam" , 25, 95);
+s1.talk()
