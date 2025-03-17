@@ -3,7 +3,8 @@ const app = express();
 const port = 3000;
 //uuid package (universally unique identifier) npm install uuid
 const{v4:uuidv4} = require('uuid');
-//method override
+
+//method override - allows us to send a put or patch or other request with a form
 const methodOverride = require("method-override");
 
 app.use(express.urlencoded({extended:true}));
@@ -64,6 +65,7 @@ app.patch("/posts/:id", (req,res)=>{
     res.redirect("/posts");
 })
 
+//edit route(implement get/posts/:id/edit)
 app.get("/posts/:id/edit", (req,res)=>{
     let {id} = req.params;
     let post = posts.find((p) => id == p.id);
