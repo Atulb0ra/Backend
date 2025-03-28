@@ -101,6 +101,21 @@ const handleCastError = (err) => {
     return err;
 }
 
+
+// using wrapAsync
+// const wrapAsync = (fn) => {
+//     return (req, res, next) => {
+//         fn(req, res, next).catch(next);
+//     }
+// };
+// app.get("/chats/:id", wrapAsync(async (req, res, next) =>{
+//     let {id} = req.params;
+//     let chat = await Chat.findById(id);
+//     if(!chat) return next(res.status(404).send("chat not found"));
+//     res.render("edit.ejs", {chat});
+// }));
+
+
 // Mongoose error handling
 app.use((err,req,res,next) => {
     console.log(err.name);
@@ -111,18 +126,6 @@ app.use((err,req,res,next) => {
 });
 
 
-// using wrapAsync
-const wrapAsync = (fn) => {
-    return (req, res, next) => {
-        fn(req, res, next).catch(next);
-    }
-};
-app.get("/chats/:id", wrapAsync(async (req, res, next) =>{
-    let {id} = req.params;
-    let chat = await Chat.findById(id);
-    if(!chat) return next(res.status(404).send("chat not found"));
-    res.render("edit.ejs", {chat});
-}));
 // using this we dont have the need to write try catch block
 // everywhere in our code whereever we are using async/await we can use this wrapAsync function
 
