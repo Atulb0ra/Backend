@@ -108,6 +108,8 @@ const ExpressError = require("./ExpressError");
 //     if(!chat) return next(res.status(404).send("chat not found"));
 //     res.render("edit.ejs", {chat});
 // }));
+// using this we dont have the need to write try catch block
+// everywhere in our code whereever we are using async/await we can use this wrapAsync function
 
 
 
@@ -126,9 +128,6 @@ app.use((err,req,res,next) => {
     next(err);
 });
 
-
-// using this we dont have the need to write try catch block
-// everywhere in our code whereever we are using async/await we can use this wrapAsync function
 
 
 app.listen(8080, () => {
