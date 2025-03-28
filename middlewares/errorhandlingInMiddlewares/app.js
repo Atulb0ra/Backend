@@ -95,12 +95,6 @@ const ExpressError = require("./ExpressError");
 // we can use try-catch block everywhere wherever we are using async/await
 
 
-// Mongoose error
-const handleCastError = (err) => {
-    res.status(400).send("Invalid id");
-    return err;
-}
-
 
 // using wrapAsync
 // const wrapAsync = (fn) => {
@@ -116,6 +110,13 @@ const handleCastError = (err) => {
 // }));
 
 
+
+
+// Mongoose error
+const handleCastError = (err) => {
+    res.status(400).send("Invalid id");
+    return err;
+}
 // Mongoose error handling
 app.use((err,req,res,next) => {
     console.log(err.name);
