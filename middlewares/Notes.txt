@@ -1,0 +1,14 @@
+In express, Middleware are functions that come into play after the server
+receives the rquest and before the response is sent to the client.
+
+middleware are used for :
+1 -> middleware chaining --->call the next middleware in the chain.
+2 -> end the request response cycle --> middleware used to send response before
+ the actual response is sent to the client
+3->execute any code
+4->make chaanges to the request or response objects.
+
+
+
+common examples: 
+Method-override, express.urlencoded, express.static and body parser
